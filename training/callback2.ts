@@ -1,7 +1,7 @@
 function add4(v1: number, v2: number) {
   return v1 + v2;
 }
-console.log(add3(25, 75));
+console.log(add4(25, 75));
 function calculate2(
   v1: number,
   v2: number,
@@ -10,7 +10,7 @@ function calculate2(
   return callback(v1, v2);
 }
 
-console.log(calculate2(6, 8, add3));
+console.log(calculate2(6, 8, add4));
 
 function multypul(v1: number, v2: number) {
   return v1 * v2;
@@ -26,7 +26,7 @@ function multiplyCalc(
   return callback(v1, v2);
 }
 
-console.log(multiplyCalc(4, 9, add3));
+console.log(multiplyCalc(4, 9, add4));
 
 // function GoodMornig(): string {
 //   console.log("Good Morning");
@@ -53,11 +53,31 @@ console.log(multiplyCalc(4, 9, add3));
 //   GoodEvening();
 // }, 5000);
 
-function Greeting(message: string): string {
-  console.log(message);
-  return message;
+// function Greeting(message: string): string {
+//   console.log(message);
+//   return message;
+// }
+
+// setTimeout(() => Greeting("Good Morning"), 1000);
+// setTimeout(() => Greeting("Hello"), 3000);
+// setTimeout(() => Greeting("Good Evening"), 5000);
+
+function Quatatin(speech: string): string {
+  console.log(speech);
+  return speech;
 }
 
-setTimeout(() => Greeting("Good Morning"), 1000);
-setTimeout(() => Greeting("Hello"), 3000);
-setTimeout(() => Greeting("Good Evening"), 5000);
+setTimeout(() => Quatatin("speech is a mirror of the soul..."));
+setTimeout(() => Quatatin("Though it seems reasonable..."), 2000);
+setTimeout(() => Quatatin("When the centipede was..."), 3000);
+
+function substraction(v1: number, v2: number): number {
+  return v1 - v2;
+}
+
+console.log(substraction(321, 231));
+
+setTimeout(() => {
+  const result = substraction(52, 21);
+  console.log(result);
+}, 7000);

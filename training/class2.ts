@@ -115,3 +115,28 @@ console.log(r1.numerator);
 console.log(r1.denominator);
 console.log(r1.getValue());
 console.log(r1.toString());
+
+class Fraction7 {
+  constructor(private _numerator: number, private _denominator: number) {}
+
+  get numerator() {
+    return this._numerator;
+  }
+  get denominator() {
+    return this._denominator;
+  }
+
+  getValue(): number {
+    return this.numerator / this.denominator;
+  }
+
+  toString(): string {
+    return `${this.numerator} ÷ ${this.denominator} = ${this.getValue()}`;
+  }
+}
+
+const e1 = new Fraction7(5, 10);
+console.log(e1.numerator);
+console.log(e1.denominator);
+console.log(e1.getValue());
+console.log(e1.toString());
