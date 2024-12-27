@@ -140,3 +140,53 @@ console.log(e1.numerator);
 console.log(e1.denominator);
 console.log(e1.getValue());
 console.log(e1.toString());
+
+class Fractio8 {
+  numerator: number;
+  denominator: number;
+
+  constructor(numerator: number, denominator: number) {
+    this.numerator = numerator;
+    this.denominator = denominator;
+  }
+
+  getValue(): number {
+    return this.denominator / this.numerator;
+  }
+}
+
+const h1 = new Fractio8(4, 77);
+console.log(h1.numerator);
+console.log(h1.denominator);
+console.log(h1.getValue());
+
+class Fraction9 {
+  private _numerator: number;
+  private _denominator: number;
+
+  constructor(numerator: number, denominator: number) {
+    this._numerator = numerator;
+    this._denominator = denominator;
+  }
+
+  get numerator() {
+    return this._numerator;
+  }
+  get denominator() {
+    return this._denominator;
+  }
+
+  getValue(): number {
+    return this.denominator / this.numerator;
+  }
+
+  toString(): string {
+    return `${this.denominator} ÷ ${this.numerator} = ${this.getValue()} `;
+  }
+}
+
+const q1 = new Fraction9(128, 512);
+console.log(q1.numerator);
+console.log(q1.denominator);
+console.log(q1.getValue());
+console.log(q1.toString());

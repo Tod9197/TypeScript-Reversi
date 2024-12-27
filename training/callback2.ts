@@ -81,3 +81,22 @@ setTimeout(() => {
   const result = substraction(52, 21);
   console.log(result);
 }, 7000);
+
+function subtraction2(v1: number, v2: number): number {
+  return v1 - v2;
+}
+console.log(subtraction2(234, 34));
+
+setTimeout(() => {
+  const result2 = subtraction2(125, 35);
+  console.log(result2);
+}, 2000);
+
+function fivekeys(word: string): string {
+  console.log(word);
+  return word;
+}
+
+setTimeout(() => fivekeys("inductive method"), 8000);
+setTimeout(() => fivekeys("Air Pillars"), 9000);
+setTimeout(() => fivekeys("economy of motion"), 10000);
