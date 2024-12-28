@@ -65,58 +65,133 @@
 // console.log(k1.toString());
 // console.log(k1.getVlaue());
 
-class Farction5 {
-  numerator: number;
-  denominator: number;
+// class Farction5 {
+//   numerator: number;
+//   denominator: number;
 
-  constructor(numerator: number, denominator: number) {
-    this.denominator = denominator;
-    this.numerator = numerator;
-  }
+//   constructor(numerator: number, denominator: number) {
+//     this.denominator = denominator;
+//     this.numerator = numerator;
+//   }
 
-  getValue() {
-    return this.denominator / this.numerator;
-  }
-}
+//   getValue() {
+//     return this.denominator / this.numerator;
+//   }
+// }
 
-const t1 = new Farction5(7, 84);
-console.log(t1.numerator);
-console.log(t1.denominator);
-console.log(t1.getValue());
+// const t1 = new Farction5(7, 84);
+// console.log(t1.numerator);
+// console.log(t1.denominator);
+// console.log(t1.getValue());
 
-class Fraction6 {
-  private _numerator: number;
-  private _denominator: number;
+// class Fraction6 {
+//   private _numerator: number;
+//   private _denominator: number;
 
-  constructor(numerator: number, denominator: number) {
-    this._numerator = numerator;
-    this._denominator = denominator;
-  }
+//   constructor(numerator: number, denominator: number) {
+//     this._numerator = numerator;
+//     this._denominator = denominator;
+//   }
 
-  get numerator() {
-    return this._numerator;
-  }
-  get denominator() {
-    return this._denominator;
-  }
+//   get numerator() {
+//     return this._numerator;
+//   }
+//   get denominator() {
+//     return this._denominator;
+//   }
 
-  getValue(): number {
-    return this.denominator / this.numerator;
-  }
+//   getValue(): number {
+//     return this.denominator / this.numerator;
+//   }
 
-  toString(): string {
-    return `${this.denominator} ÷ ${this.numerator} = ${this.getValue()}`;
-  }
-}
+//   toString(): string {
+//     return `${this.denominator} ÷ ${this.numerator} = ${this.getValue()}`;
+//   }
+// }
 
-const r1 = new Fraction6(4, 32);
+// const r1 = new Fraction6(4, 32);
 
-console.log(r1.numerator);
-console.log(r1.denominator);
-console.log(r1.getValue());
-console.log(r1.toString());
+// console.log(r1.numerator);
+// console.log(r1.denominator);
+// console.log(r1.getValue());
+// console.log(r1.toString());
 
-class Fraction7 {
+// class Fraction7 {
+//   constructor(private _numerator: number, private _denominator: number) {}
+
+//   get numerator() {
+//     return this._numerator;
+//   }
+//   get denominator() {
+//     return this._denominator;
+//   }
+
+//   getValue(): number {
+//     return this.numerator / this.denominator;
+//   }
+
+//   toString(): string {
+//     return `${this.numerator} ÷ ${this.denominator} = ${this.getValue()}`;
+//   }
+// }
+
+// const e1 = new Fraction7(5, 10);
+// console.log(e1.numerator);
+// console.log(e1.denominator);
+// console.log(e1.getValue());
+// console.log(e1.toString());
+
+// class Fractio8 {
+//   numerator: number;
+//   denominator: number;
+
+//   constructor(numerator: number, denominator: number) {
+//     this.numerator = numerator;
+//     this.denominator = denominator;
+//   }
+
+//   getValue(): number {
+//     return this.denominator / this.numerator;
+//   }
+// }
+
+// const h1 = new Fractio8(4, 77);
+// console.log(h1.numerator);
+// console.log(h1.denominator);
+// console.log(h1.getValue());
+
+// class Fraction9 {
+//   private _numerator: number;
+//   private _denominator: number;
+
+//   constructor(numerator: number, denominator: number) {
+//     this._numerator = numerator;
+//     this._denominator = denominator;
+//   }
+
+//   get numerator() {
+//     return this._numerator;
+//   }
+//   get denominator() {
+//     return this._denominator;
+//   }
+
+//   getValue(): number {
+//     return this.denominator / this.numerator;
+//   }
+
+//   toString(): string {
+//     return `${this.denominator} ÷ ${this.numerator} = ${this.getValue()} `;
+//   }
+// }
+
+// const q1 = new Fraction9(128, 512);
+// console.log(q1.numerator);
+// console.log(q1.denominator);
+// console.log(q1.getValue());
+// console.log(q1.toString());
+
+class Fraction10 {
   constructor(private _numerator: number, private _denominator: number) {}
 
   get numerator() {
@@ -127,66 +202,16 @@ class Fraction7 {
   }
 
   getValue(): number {
-    return this.numerator / this.denominator;
+    return this._denominator / this._numerator;
   }
-
   toString(): string {
-    return `${this.numerator} ÷ ${this.denominator} = ${this.getValue()}`;
+    return `${this.denominator} ÷ ${
+      this.numerator
+    } は ${this.getValue()} です。`;
   }
 }
-
-const e1 = new Fraction7(5, 10);
-console.log(e1.numerator);
-console.log(e1.denominator);
-console.log(e1.getValue());
-console.log(e1.toString());
-
-class Fractio8 {
-  numerator: number;
-  denominator: number;
-
-  constructor(numerator: number, denominator: number) {
-    this.numerator = numerator;
-    this.denominator = denominator;
-  }
-
-  getValue(): number {
-    return this.denominator / this.numerator;
-  }
-}
-
-const h1 = new Fractio8(4, 77);
-console.log(h1.numerator);
-console.log(h1.denominator);
-console.log(h1.getValue());
-
-class Fraction9 {
-  private _numerator: number;
-  private _denominator: number;
-
-  constructor(numerator: number, denominator: number) {
-    this._numerator = numerator;
-    this._denominator = denominator;
-  }
-
-  get numerator() {
-    return this._numerator;
-  }
-  get denominator() {
-    return this._denominator;
-  }
-
-  getValue(): number {
-    return this.denominator / this.numerator;
-  }
-
-  toString(): string {
-    return `${this.denominator} ÷ ${this.numerator} = ${this.getValue()} `;
-  }
-}
-
-const q1 = new Fraction9(128, 512);
-console.log(q1.numerator);
-console.log(q1.denominator);
-console.log(q1.getValue());
-console.log(q1.toString());
+const o1 = new Fraction10(20, 30);
+console.log(o1.numerator);
+console.log(o1.numerator);
+console.log(o1.getValue());
+console.log(o1.toString());
