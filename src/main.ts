@@ -106,14 +106,14 @@ app.get("/api/games/latest/turns/:turnCount", async (req, res) => {
       [turn["id"]]
     );
     const squares = squaresSelectResult[0];
-    const borad = Array.from(Array(8)).map(() => Array.from(Array(8)));
+    const board = Array.from(Array(8)).map(() => Array.from(Array(8)));
     squares.forEach((s) => {
-      borad[s.y][s.x] = s.disc;
+      board[s.y][s.x] = s.disc;
     });
 
     const responseBody = {
       turnCount,
-      borad,
+      board,
       nextDisc: turn["next_disc"],
       //TODO決着がついている場合、game_resultsテーブルから取得する
       winnerDisc: null,
