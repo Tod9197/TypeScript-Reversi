@@ -1,9 +1,8 @@
 import express from "express";
-import { TurnGateway } from "../dataaccess/turnGateway";
-import { GameGateway } from "../dataaccess/gameGateway";
-import { SquareGateway } from "../dataaccess/squareGateway";
-import { connectMySQL } from "../dataaccess/connection";
-import { DARK, INITIAL_BOARD } from "../application/constants";
+import { TurnGateway } from "../infrastructure/turnGateway";
+import { GameGateway } from "../infrastructure/gameGateway";
+import { SquareGateway } from "../infrastructure/squareGateway";
+import { connectMySQL } from "../infrastructure/connection";
 import { GameService } from "../application/gameService";
 
 export const gameRouter = express.Router();
