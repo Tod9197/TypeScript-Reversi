@@ -1,3 +1,4 @@
+import { DomainError } from "../../error/domainError";
 import { Disc, isOppositeDisc } from "./disc";
 import { Move } from "./move";
 import { Point } from "./point";
@@ -12,7 +13,10 @@ export class Board {
   place(move: Move): Board {
     // 空のマス目ではない場合、置くことはできない
     if (this._discs[move.point.y][move.point.x] !== Disc.Empty) {
-      throw new Error("Selected point is not empty");
+      throw new DomainError(
+        "SelectedPointIsNotEmpty",
+        "Selected point is not empty"
+      );
     }
 
     // ひっくり返せる点をリストアップ
@@ -20,7 +24,7 @@ export class Board {
 
     // ひっくり返せる点がない場合、置くことはできない
     if (flipPoints.length === 0) {
-      throw new Error("Flip points is empty");
+      throw new DomainError("FlipPointsIsEmpty", "Flip points is empty");
     }
 
     //盤面をコピー
@@ -31,7 +35,10 @@ export class Board {
     });
     // 石を置く
     newDiscs[move.point.y][move.point.x] = move.disc;
-    // TODOひっくり返す
+    // ひっくり返す
+    flipPoints.forEach((p) => {
+      newDiscs[p.y][p.x] = move.disc;
+    });
 
     return new Board(newDiscs);
   }
@@ -42,24 +49,43 @@ export class Board {
     const walldX = move.point.x + 1;
     const walledY = move.point.y + 1;
 
-    // 上
-    const flipCandidate: Point[] = [];
+    const checkFlipPoints = (xMove: number, yMove: number) => {
+      const flipCandidate: Point[] = [];
 
-    // 1つ動いた位置から開始
-    let cursorX = walldX;
-    let cursorY = walledY - 1;
+      // 1つ動いた位置から開始
+      let cursorX = walldX + xMove;
+      let cursorY = walledY + yMove;
 
-    // 手と逆の色の石がある間、1つずつ見ていく
-    while (isOppositeDisc(move.disc, this._wallDiscs[cursorY][cursorX])) {
-      // 番兵を考慮して-1する
-      flipCandidate.push(new Point(cursorX - 1, cursorY - 1));
-      cursorY--;
-      // 次の手が同じ色の石なら、ひっくり返す石が確定
-      if (move.disc === this._wallDiscs[cursorY][cursorX]) {
-        flipPoints.push(...flipCandidate);
-        break;
+      // 手と逆の色の石がある間、1つずつ見ていく
+      while (isOppositeDisc(move.disc, this._wallDiscs[cursorY][cursorX])) {
+        // 番兵を考慮して-1する
+        flipCandidate.push(new Point(cursorX - 1, cursorY - 1));
+        cursorX += xMove;
+        cursorY += yMove;
+        // 次の手が同じ色の石なら、ひっくり返す石が確定
+        if (move.disc === this._wallDiscs[cursorY][cursorX]) {
+          flipPoints.push(...flipCandidate);
+          break;
+        }
       }
-    }
+    };
+
+    // 上
+    checkFlipPoints(0, -1);
+    // 左上
+    checkFlipPoints(-1, -1);
+    // 左
+    checkFlipPoints(-1, 0);
+    // 左下
+    checkFlipPoints(-1, 1);
+    // 下
+    checkFlipPoints(0, 1);
+    // 右下
+    checkFlipPoints(1, 1);
+    // 右
+    checkFlipPoints(1, 0);
+    // 右上
+    checkFlipPoints(1, -1);
 
     return flipPoints;
   }
