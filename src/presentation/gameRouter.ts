@@ -3,7 +3,7 @@ import { TurnGateway } from "../infrastructure/turnGateway";
 import { GameGateway } from "../infrastructure/gameGateway";
 import { SquareGateway } from "../infrastructure/squareGateway";
 import { connectMySQL } from "../infrastructure/connection";
-import { GameService } from "../application/gameService";
+import { GameService } from "../application/service/gameService";
 
 export const gameRouter = express.Router();
 
