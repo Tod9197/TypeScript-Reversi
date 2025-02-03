@@ -5,18 +5,22 @@ import { Point } from "../../domain/model/turn/point";
 import { TurnRepository } from "../../domain/model/turn/turnRepository";
 import { GameRepository } from "../../domain/model/game/gameRepository";
 import { ApplicationError } from "../../domain/error/applicationError";
+import { GameResultRepository } from "../../domain/model/gameResult/gameResultRepositry";
+import { GameResult } from "../../domain/model/gameResult/gameResult";
+import { WinnerDisc } from "../../domain/model/gameResult/winnerDisc";
 
 const gameGateway = new GameGateway();
 
 const turnRepository = new TurnRepository();
 const gameRepository = new GameRepository();
+const gameResultRepository = new GameResultRepository();
 
 class FindLatestGameTurnByTurnOutput {
   constructor(
     private _turnCount: number,
     private _board: number[][],
     private _nextDisc: number | undefined,
-    private _winnerDisc: number | undefined
+    private _winnerDisc: WinnerDisc | undefined
   ) {}
 
   get turnCount() {
@@ -59,12 +63,16 @@ export class TurnService {
         turnCount
       );
 
+      let gameResult: GameResult | undefined = undefined;
+      if (turn.gameEnded()) {
+        gameResult = await gameResultRepository.findForGameId(conn, game.id);
+      }
+
       return new FindLatestGameTurnByTurnOutput(
         turnCount,
         turn.board.discs,
         turn.nextDisc,
-        //TODO決着がついている場合、game_resultsテーブルから取得する
-        undefined
+        gameResult?.winnerDisc
       );
     } finally {
       await conn.end();
@@ -102,8 +110,8 @@ export class TurnService {
       // 勝敗が決した場合、対戦結果を保存
       if (newTurn.gameEnded()) {
         const winnerDisc = newTurn.winnerDisc();
-
-        //TODO 対戦結果を保存
+        const gameResult = new GameResult(game.id, winnerDisc, newTurn.endAt);
+        await gameResultRepository.save(conn, gameResult);
       }
 
       await conn.commit();

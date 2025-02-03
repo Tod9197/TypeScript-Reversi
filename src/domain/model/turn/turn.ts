@@ -51,7 +51,7 @@ export class Turn {
     if (darkCount === lightCount) {
       return WinnerDisc.Draw;
     } else if (darkCount > lightCount) {
-      return WinnerDisc.Drak;
+      return WinnerDisc.Dark;
     } else {
       return WinnerDisc.Light;
     }
