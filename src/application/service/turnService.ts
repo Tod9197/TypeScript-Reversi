@@ -1,4 +1,4 @@
-import { GameGateway } from "../../infrastructure/gameGateway";
+import { GameGateway } from "../../../infrastructure/gameGateway";
 import { connectMySQL } from "../../infrastructure/connection";
 import { Disc, toDisc } from "../../domain/model/turn/disc";
 import { Point } from "../../domain/model/turn/point";
