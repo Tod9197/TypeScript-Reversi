@@ -6,6 +6,14 @@ numbers.forEach((num, i) => {
   console.log(`${i}: ${double}`);
 });
 
+const numbers2 = [3, 6, 9, 12, 15, 18, 21];
+console.log(numbers2);
+
+numbers2.forEach((num) => {
+  const numdouble = num * 2;
+  console.log(numdouble);
+});
+
 const names = ["Devin", "Mari", "Dave"];
 const teachers = names.map((name, i) => {
   return {
@@ -33,3 +41,12 @@ foodPrices.forEach((foodPrice) => {
   const taxCulcSimple = Math.floor(taxCulc);
   console.log(taxCulcSimple);
 });
+
+const EnglishNames = ["Sherry", "Sasha", "Norah", "Lauren"];
+const myFriends = EnglishNames.map((name, i) => {
+  return {
+    id: i,
+    name: name,
+  };
+});
+console.log(myFriends);
